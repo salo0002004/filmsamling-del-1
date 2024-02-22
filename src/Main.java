@@ -6,17 +6,26 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        int opret = 0;
-        int afslut = 2;
+        MovieCollection collection = new MovieCollection();
 
-        while (opret != afslut) {
+        int menuChoice = 0;
+        final int SENTINEL = 3;
+
+        Controller controller = new Controller();
+
+        // Create controller outside the loop
+
+        while (menuChoice != SENTINEL) {
 
             System.out.println("Velkommen til min filmsamnling!");
             System.out.println("1 : Opret en film");
-            System.out.println("2 : Afslut");
-            opret = scanner.nextInt();
+            System.out.println("2 : Vis Collection");
+            System.out.println("3 : Afslut");
 
-            if (opret == 1) {
+            menuChoice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline character
+
+            if (menuChoice == 1) {
                 System.out.println("indtast filmens navn: ");
                 String filmNavn = scanner.nextLine();
                 System.out.println("indtast filmens direktør");
@@ -25,7 +34,7 @@ public class Main {
                 int filmLængde = scanner.nextInt();
                 System.out.println("indtast filmens årtal");
                 int filmÅr = scanner.nextInt();
-                scanner.nextLine();
+                scanner.nextLine(); // Consume newline character
                 System.out.println("indtast filmens genre");
                 String filmGenre = scanner.nextLine();
                 System.out.println("Er den farvede, så skriv yes");
@@ -33,19 +42,19 @@ public class Main {
                 boolean erDenFarvede = false;
                 if (farvede.equals("yes")) {
                     erDenFarvede = true;
-
-                    Movie movie = new Movie(filmNavn, filmDirektør, filmLængde, filmÅr, filmGenre, erDenFarvede);
-                    System.out.println(movie.getFilmNavn() + " Movie er lavet ");
-
-                    MovieCollection collection = new MovieCollection();
-                    collection.addMovie(movie);
+                    controller.addMovie(filmNavn, filmDirektør, filmÅr, filmGenre, erDenFarvede, filmLængde);
+                    System.out.println(filmNavn + " Movie er lavet ");
+                }else{
+                    controller.addMovie(filmNavn, filmDirektør, filmÅr, filmGenre, erDenFarvede, filmLængde);
+                    System.out.println(filmNavn + " Movie er lavet ");
                 }
-            } else if (opret == afslut) {
-                System.out.println("Du valgte ingen film!");
-                break;
+                } else if (menuChoice == SENTINEL) {
+                    System.out.println("Du valgte ingen film!");
+                    break;
+                } else if (menuChoice == 2) {
+                    controller.visCollection();
+                }
             }
         }
-
-        scanner.close();
     }
-}
+

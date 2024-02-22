@@ -8,6 +8,7 @@ public class Movie {
     private String filmGenre;
     private boolean erDenFarvedeEllerEj;
 
+
     public Movie(String filmNavn, String filmDirektør, int filmLængde, int filmÅr, String filmGenre, boolean erDenFarvedeEllerEj) {
         this.filmNavn = filmNavn;
         this.filmDirektør = filmDirektør;
@@ -19,13 +20,12 @@ public class Movie {
 
     }
 
-    public Movie(String filmNavn, String filmDirektør, int filmÅr, int filmGenre, String erDenFarvedeEllerEj, int filmLængde) {
-    }
+
 
     public String getFilmNavn() {
         return filmNavn;
 
-}
+    }
 
     public String getFilmDirektør() {
         return filmDirektør;
@@ -46,9 +46,15 @@ public class Movie {
     public int getFilmLængde() {
         return filmLængde;
 
-
-
     }
+
+    @Override
+    public String toString() {
+        String result = "";
+        result += filmNavn + " " + filmGenre;
+            return result;
+    }
+
 }
 
 
