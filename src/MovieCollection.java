@@ -9,7 +9,7 @@ public class MovieCollection {
 
     // Metode til at tilføje en film til samlingen
     public void addMovie(String filmNavn, String filmDirektør, int filmÅr, int filmGenre, String erDenFarvedeEllerEj, int filmLængde) {
-        Movie movie  = new Movie(filmNavn, filmDirektør, filmÅr, filmGenre, erDenFarvedeEllerEj, filmLængde);
+        Movie movie  = new Movie(filmNavn, filmDirektør, filmÅr, filmGenre, erDenFarvedeEllerEj,filmLængde);
         collection.add(movie);
 
     }

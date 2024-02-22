@@ -19,6 +19,9 @@ public class Movie {
 
     }
 
+    public Movie(String filmNavn, String filmDirektør, int filmÅr, int filmGenre, String erDenFarvedeEllerEj, int filmLængde) {
+    }
+
     public String getFilmNavn() {
         return filmNavn;
 
