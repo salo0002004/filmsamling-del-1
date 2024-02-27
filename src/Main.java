@@ -9,7 +9,7 @@ public class Main {
         MovieCollection collection = new MovieCollection();
 
         int menuChoice = 0;
-        final int SENTINEL = 3;
+        final int SENTINEL = 4;
 
         Controller controller = new Controller();
 
@@ -20,7 +20,8 @@ public class Main {
             System.out.println("Velkommen til min filmsamnling!");
             System.out.println("1 : Opret en film");
             System.out.println("2 : Vis Collection");
-            System.out.println("3 : Afslut");
+            System.out.println("3 : Søg film");
+            System.out.println("4 : Afslut");
 
             menuChoice = scanner.nextInt();
             scanner.nextLine(); // Consume newline character
@@ -44,17 +45,32 @@ public class Main {
                     erDenFarvede = true;
                     controller.addMovie(filmNavn, filmDirektør, filmÅr, filmGenre, erDenFarvede, filmLængde);
                     System.out.println(filmNavn + " Movie er lavet ");
-                }else{
+                } else {
                     controller.addMovie(filmNavn, filmDirektør, filmÅr, filmGenre, erDenFarvede, filmLængde);
                     System.out.println(filmNavn + " Movie er lavet ");
                 }
-                } else if (menuChoice == SENTINEL) {
-                    System.out.println("Du valgte ingen film!");
-                    break;
-                } else if (menuChoice == 2) {
-                    controller.visCollection();
+            } else if (menuChoice == SENTINEL) {
+                System.out.println("Du valgte ingen film!");
+                break;
+            } else if (menuChoice == 2) {
+                controller.visCollection();
+            } else if (menuChoice == 3) {
+                System.out.println("Søg efter en specifik film: ");
+                System.out.println("Indtast filmens navn: ");
+                String movieName = scanner.nextLine();
+            if (controller.searchMovie(movieName)) {
+                    System.out.println("Filmen findes i din filmsamling." +  controller.visCollection());
+                } else {
+                    System.out.println("Filmen blev ikke fundet i din filmsamling.");
+
                 }
+
+            } else {
+                System.out.println("\nUgyldigt valg. Prøv igen.");
+
             }
         }
     }
+
+}
 

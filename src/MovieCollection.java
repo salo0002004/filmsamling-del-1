@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 public class MovieCollection {
-    private ArrayList<Movie> collection;
+    ArrayList<Movie> collection;
 
 
     public MovieCollection() {
@@ -10,7 +10,7 @@ public class MovieCollection {
 
     // Metode til at tilføje en film til samlingen
     public void addMovie(String filmNavn, String filmDirektør, int filmÅr, String filmGenre, boolean erDenFarvedeEllerEj, int filmLængde) {
-        Movie movie = new  Movie(filmNavn, filmDirektør, filmLængde, filmÅr, filmGenre,erDenFarvedeEllerEj);
+        Movie movie = new Movie(filmNavn, filmDirektør, filmLængde, filmÅr, filmGenre, erDenFarvedeEllerEj);
         collection.add(movie);
 
     }
@@ -20,14 +20,26 @@ public class MovieCollection {
     }
 
 
-    public void printCollection() {
+    public boolean contains(String filmTitel) {
         for (Movie movie : collection) {
-            if (movie != null) {
-                System.out.println(movie);
+            if (movie.getFilmNavn().contains(filmTitel)) {
+                return true;
             }
-
         }
+        return false;
     }
+
 }
+
+
+
+
+
+            
+
+
+
+
+
 
 

@@ -1,5 +1,3 @@
-
-import java.util.ArrayList;
 public class Controller {
     private MovieCollection collection;
 
@@ -9,11 +7,18 @@ public class Controller {
 
 
     public void addMovie(String filmNavn, String filmDirektør, int filmÅr, String filmGenre, boolean erDenFarvedeEllerEj, int filmLængde) {
-        collection.addMovie(filmNavn, filmDirektør, filmÅr, filmGenre, erDenFarvedeEllerEj,  filmLængde);
+        collection.addMovie(filmNavn, filmDirektør, filmÅr, filmGenre, erDenFarvedeEllerEj, filmLængde);
     }
 
-public void visCollection(){
-        collection.printCollection();
+    public String visCollection() {
+        return collection.collection.toString();
+
+
+    }
+
+    public boolean searchMovie(String title) {
+        return collection.collection.contains(title);
+
 
 }
 
