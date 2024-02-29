@@ -29,6 +29,19 @@ public class MovieCollection {
         return false;
     }
 
+    public String searchMovie(String search) {
+        String filmSearchMatches = "";
+        for (Movie movie : collection) {
+            if (movie.getFilmNavn().toLowerCase().contains((search.toLowerCase()))) {
+                filmSearchMatches += "\n" + movie.toString();
+            }
+        }
+        if (!(filmSearchMatches.length() > 0)) {
+            return "\nDer var ikke et match;";
+        }
+        return filmSearchMatches;
+    }
+
 }
 
 

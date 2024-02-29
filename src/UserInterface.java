@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -21,7 +22,6 @@ public class UserInterface {
             // Create controller outside the loop
 
             while (menuChoice != SENTINEL) {
-addMovie();
                 System.out.println("Velkommen til min filmsamnling!");
                 System.out.println("1 : Opret en film");
                 System.out.println("2 : Vis Collection");
@@ -42,6 +42,7 @@ addMovie();
 
                 }
             }
+
         }
             public void addMovie() {
                 System.out.println("indtast filmens navn: ");
@@ -77,22 +78,31 @@ addMovie();
 
             }
 
+//            public void søgFilm(){
+//                System.out.println("Søg efter en specifik film: ");
+//                System.out.println("Indtast filmens navn: ");
+//                String movieName = scanner.nextLine();
+//                if (controller.searchMovie(movieName)) {
+//                    System.out.println("Filmen findes i din filmsamling." + controller.visCollection());
+//                } else {
+//                    System.out.println("Filmen blev ikke fundet i din filmsamling.");
+//                }
+
             public void søgFilm(){
-                System.out.println("Søg efter en specifik film: ");
-                System.out.println("Indtast filmens navn: ");
-                String movieName = scanner.nextLine();
-                if (controller.searchMovie(movieName)) {
-                    System.out.println("Filmen findes i din filmsamling." + controller.visCollection());
-                } else {
-                    System.out.println("Filmen blev ikke fundet i din filmsamling.");
+                    System.out.println("indtast et eller flere bogstaver af en filmtitel: ");
+                    String searchWord = scanner.next();
+                    ArrayList<Movie> movieMatches = controller.searchMovie(searchWord);
+                    if(!(movieMatches.size() > 0)) {
+                        System.out.println("\n Der var desværre ikke et match.\n");
+                    } else {
+                        for (Movie m : movieMatches) {
+                            System.out.println("\n" + m);
+                        }
+                    }
                 }
 
-            } else {
-        System.out.println("\nUgyldigt valg. Prøv igen.");
-
-
         }
-    }
+
 
 
 

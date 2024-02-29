@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Controller {
     private MovieCollection collection;
 
@@ -16,8 +18,8 @@ public class Controller {
 
     }
 
-    public boolean searchMovie(String title) {
-        return collection.collection.contains(title);
+    public ArrayList<Movie> searchMovie(String title) {
+        return collection.collection;
 
 
 }
